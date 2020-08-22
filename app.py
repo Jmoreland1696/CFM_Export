@@ -5,8 +5,8 @@ from firebase_admin import db
 from flask import Flask, request
 
 # Read in Cloud Credentials
-firebase_key = eval(open('firebase_key.txt','r').read())
-databaseURL = open('databaseURL.txt','r').read()
+firebase_key = eval(open(r'C:\Users\jonmoreland\firebase_key.txt','r').read())
+databaseURL = open(r'C:\Users\jonmoreland\database_url.txt','r').read()
 
 # Connecting
 cred = credentials.Certificate(firebase_key)
