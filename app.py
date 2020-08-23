@@ -6,7 +6,7 @@ from firebase_admin import db
 from flask import Flask, request
 
 # Read in Cloud Credentials
-firebase_key = os.environ['firebase_credentials']
+firebase_key = os.environ['firebase_credentials'].replace("\\n","\n")
 databaseURL = os.environ['firebase_url']
 
 # Connecting
