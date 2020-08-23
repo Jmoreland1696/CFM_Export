@@ -1,12 +1,13 @@
 import sys
+import os
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
 from flask import Flask, request
 
 # Read in Cloud Credentials
-firebase_key = firebase_credentials
-databaseURL = firebase_url
+firebase_key = os.environ['firebase_credentials']
+databaseURL = os.environ['firebase_url']
 
 # Connecting
 cred = credentials.Certificate(firebase_key)
