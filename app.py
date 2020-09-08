@@ -78,7 +78,7 @@ def stats(system, leagueId, weekType, weekNumber, dataType):
 	db.reference('data/'+system+'/'+leagueId+'/week/'+weekType+'/'+weekNumber+'/'+dataType+'/'+statname).set(request.json[statname])
 	return 'OK', 200
 
-@app.route('/test/<leagueId>'
+@app.route('/test/<leagueId>')
 def print_team_df(leagueId):	   
 	data = load_json(leagueId)
     	league_info_df = pd.DataFrame(data['leagueteams']['leagueTeamInfoList'])
