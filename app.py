@@ -3,7 +3,10 @@ import os
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
-from flask import Flask, request
+from flask import Flask, request, render_template, session, redirect
+import numpy as np
+import pandas as pd
+
 
 # Read in Cloud Credentials
 firebase_key = os.environ['firebase_credentials'].replace("\\n","\n")
@@ -73,5 +76,24 @@ def stats(system, leagueId, weekType, weekNumber, dataType):
 	db.reference('data/'+system+'/'+leagueId+'/week/'+weekType+'/'+weekNumber+'/'+dataType+'/'+statname).set(request.json[statname])
 	return 'OK', 200
 
+@app.route('/test/<leagueId>'
+def print_team_df(leagueId)	   
+	data = load_json(leagueId)
+    	league_info_df = pd.DataFrame(data['leagueteams']['leagueTeamInfoList'])
+
+    	standings_df = pd.DataFrame(data['standings']['teamStandingInfoList'])
+
+    	team_df = pd.merge(standings_df, league_info_df, on = 'teamId')
+	   
+	return render_template('simple.html',  tables=[team_df.to_html(classes='data')], titles=team_df.columns.values)
+    	
+	   
+	   
+def load_json(leagueId)
+	madden_firebase = firebase.FirebaseApplication('https://madden-bebca.firebaseio.com/data/ps4/')
+	result = madden_firebase.get(leagueid, None)
+	madden_json = json.loads(result)
+	return madden_json
+	  
 if __name__ == '__main__':
 	app.run()
