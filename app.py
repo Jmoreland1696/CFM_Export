@@ -81,11 +81,9 @@ def stats(system, leagueId, weekType, weekNumber, dataType):
 @app.route('/test/<leagueId>')
 def print_team_df(leagueId):	   
 	data = load_json(leagueId)
-    	league_info_df = pd.DataFrame(data['leagueteams']['leagueTeamInfoList'])
-
-    	standings_df = pd.DataFrame(data['standings']['teamStandingInfoList'])
-
-    	team_df = pd.merge(standings_df, league_info_df, on = 'teamId')
+	league_info_df = pd.DataFrame(data['leagueteams']['leagueTeamInfoList'])
+	standings_df = pd.DataFrame(data['standings']['teamStandingInfoList'])
+	team_df = pd.merge(standings_df, league_info_df, on = 'teamId')
 	   
 	return team_df.to_html(header="true", table_id="table")
     	
