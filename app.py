@@ -7,6 +7,7 @@ from flask import Flask, request, render_template, session, redirect
 import numpy as np
 import pandas as pd
 import json
+from firebase import firebase
 
 
 # Read in Cloud Credentials
