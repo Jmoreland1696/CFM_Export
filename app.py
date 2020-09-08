@@ -78,7 +78,7 @@ def stats(system, leagueId, weekType, weekNumber, dataType):
 	return 'OK', 200
 
 @app.route('/test/<leagueId>'
-def print_team_df(leagueId)	   
+def print_team_df(leagueId):	   
 	data = load_json(leagueId)
     	league_info_df = pd.DataFrame(data['leagueteams']['leagueTeamInfoList'])
 
@@ -90,7 +90,7 @@ def print_team_df(leagueId)
     	
 	   
 	   
-def load_json(leagueId)
+def load_json(leagueId):
 	madden_firebase = firebase.FirebaseApplication('https://madden-bebca.firebaseio.com/data/ps4/')
 	result = madden_firebase.get(leagueid, None)
 	madden_json = json.loads(result)
