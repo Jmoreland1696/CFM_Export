@@ -92,7 +92,7 @@ def print_team_df(leagueId):
 	   
 def load_json(leagueId):
 	madden_firebase = firebase.FirebaseApplication('https://madden-bebca.firebaseio.com/data/ps4/')
-	result = madden_firebase.get(leagueid, None)
+	result = madden_firebase.get(leagueId, None)
 	madden_json = json.loads(result)
 	return madden_json
 	  
