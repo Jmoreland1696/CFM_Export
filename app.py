@@ -87,7 +87,7 @@ def print_team_df(leagueId):
 
     	team_df = pd.merge(standings_df, league_info_df, on = 'teamId')
 	   
-	return render_template('simple.html',  tables=[team_df.to_html(classes='data')], titles=team_df.columns.values)
+	return team_df.to_html(header="true", table_id="table")
     	
 	   
 	   
