@@ -7,7 +7,7 @@ from flask import Flask, request, render_template, session, redirect
 import numpy as np
 import pandas as pd
 import json
-from firebase import firebase
+from python-firebase import firebase
 
 
 # Read in Cloud Credentials
@@ -92,7 +92,7 @@ def print_team_df(leagueId):
 	   
 	   
 def load_json(leagueId):
-	madden_firebase = firebase.FirebaseApplication('https://madden-bebca.firebaseio.com/data/ps4/')
+	madden_firebase = firebase.FirebaseApplication(databaseURL+'/data/ps4/')
 	result = madden_firebase.get(leagueId, None)
 	madden_json = json.loads(result)
 	return madden_json
