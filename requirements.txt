@@ -35,3 +35,4 @@ Werkzeug==0.16.0
 wincertstore==0.2
 numpy==1.19.0
 pandas==1.1.1 
+python-firebase==1.2
